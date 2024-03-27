@@ -102,6 +102,7 @@ module.exports={
     updataEmployee,
     deleteEmployee,
     searchByName,
-    sortBySalary
+    sortBySalary,
+    filterByDepartment
 }
 
