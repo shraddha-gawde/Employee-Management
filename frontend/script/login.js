@@ -95,7 +95,7 @@ async function loginUser() {
         localStorage.setItem("token", data.access_token);
         console.log(data);
         setTimeout(() => {}, 1000000);
-        location.href = "../view/dashboard.html";
+        location.href = "../frontend/view/dashboard.html";
       } else {
         invalidspan.innerHTML = `${data.msg}`;
         invalidspan.style.color = "red";

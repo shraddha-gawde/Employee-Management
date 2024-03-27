@@ -213,3 +213,9 @@ async function deleteEmployee(employeeId) {
     }
 }
 
+// Function to logout the user
+function logout() {
+    localStorage.removeItem("token");
+  
+    window.location.href = "/index.html"; 
+}
