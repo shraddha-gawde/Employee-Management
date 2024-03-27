@@ -4,7 +4,7 @@ const cookieparser = require("cookie-parser")
 const { register, login, logout } = require("../controller/user.controller")
 const { authentication } = require("../middlewares/auth.middleware")
 
-const { addEmployee, getEmployee, updataEmployee, deleteEmployee, searchByName, sortBySalary } = require("../controller/employess.controller")
+const { addEmployee, getEmployee, updataEmployee, deleteEmployee, searchByName, sortBySalary, filterByDepartment } = require("../controller/employess.controller")
 const router = express.Router();
 router.use(express.json())
 router.use(cookieparser())
@@ -25,6 +25,7 @@ router.patch("/dashboard/update/:id", updataEmployee)
 router.delete("/dashboard/delete/:id", deleteEmployee)
 router.get("/dashboard/search", searchByName)
 router.get("/dashboard/sort", sortBySalary)
+router.get("/dashboard/filter", filterByDepartment)
 module.exports={ 
     router 
 }

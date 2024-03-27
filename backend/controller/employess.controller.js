@@ -82,6 +82,19 @@ const sortBySalary = async (req, res) => {
     }
 }
 
+const filterByDepartment = async (req, res) => {
+    const department = req.query.department;
+    try {
+        const employees = await employeeModel.find({ department });
+        if (employees.length > 0) {
+            res.status(200).json({ employees });
+        } else {
+            res.status(404).json({ msg: `No employees found in the '${department}' department` });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 module.exports={
     addEmployee,
