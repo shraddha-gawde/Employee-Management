@@ -10,19 +10,25 @@ const addEmployee = async(req, res)=>{
     }
 }
 
+
 const getEmployee = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
     try {
+        const totalCount = await employeeModel.countDocuments();
+        const totalPages = Math.ceil(totalCount / limit);
+        
         const employees = await employeeModel.find()
             .skip((page - 1) * limit)
             .limit(limit)
             .exec();
-        res.json(employees);
+
+        res.json({ employees, totalPages, perPage: limit }); 
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
+
 
 const updataEmployee = async(req, res)=>{
     const { id } = req.params;
